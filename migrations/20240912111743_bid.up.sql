@@ -1,0 +1,13 @@
+CREATE TABLE bid (
+  id UUID PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  description TEXT NOT NULL,
+  status VARCHAR(50) NOT NULL,
+  tender_id UUID REFERENCES tender(id) ON DELETE CASCADE,
+  author_type VARCHAR(50) NOT NULL,
+  author_id UUID REFERENCES employee(id) ON DELETE CASCADE,
+  version INT NOT NULL DEFAULT 1,
+  decision VARCHAR(50),
+  feedback VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
